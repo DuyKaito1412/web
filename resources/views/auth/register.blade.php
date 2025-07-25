@@ -56,16 +56,33 @@
     }
     .form-control {
         border-radius: 30px;
-        padding: 12px 20px 12px 44px;
+        padding: 12px 48px 12px 44px; /* tăng padding phải */
         border: 1.5px solid #e0e0e0;
         font-size: 1rem;
         transition: border 0.2s;
         box-shadow: none;
+        position: relative;
+        z-index: 1;
     }
     .form-control:focus {
         border: 1.5px solid #4a4eec;
         outline: none;
         box-shadow: 0 0 0 2px #4a4eec22;
+    }
+    .password-toggle {
+        right: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+        cursor: pointer;
+        color: #aaa;
+        z-index: 3;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: auto;
     }
     .btn-register {
         border-radius: 30px;
@@ -145,7 +162,7 @@
             <div class="input-group">
                 <span class="fa fa-lock"></span>
                 <input type="password" class="form-control @error('mat_khau') is-invalid @enderror" id="register-password"
-                       name="mat_khau" placeholder="Mật Khẩu" required>
+                       name="mat_khau" placeholder="Mật Khẩu" required style="padding-right:40px;">
                 <span class="fa fa-eye password-toggle" id="toggle-register-password" style="position:absolute; right:18px; top:50%; transform:translateY(-50%); cursor:pointer; color:#aaa;"></span>
                 @error('mat_khau')
                     <span class="invalid-feedback" role="alert">
@@ -157,7 +174,7 @@
             <div class="input-group">
                 <span class="fa fa-lock"></span>
                 <input type="password" class="form-control" id="register-password-confirm"
-                       name="mat_khau_confirmation" placeholder="Xác Nhận Mật Khẩu" required>
+                       name="mat_khau_confirmation" placeholder="Xác Nhận Mật Khẩu" required style="padding-right:40px;">
                 <span class="fa fa-eye password-toggle" id="toggle-register-password-confirm" style="position:absolute; right:18px; top:50%; transform:translateY(-50%); cursor:pointer; color:#aaa;"></span>
             </div>
 
