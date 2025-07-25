@@ -27,14 +27,10 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="{{ route('home') }}">
-                <img src="{{ asset('img/logo-vnpt.png') }}" alt="VNPT Sơn La Logo">
-                VNPT Sơn La
+                <img src="{{ asset('img/logo-vnpt.png') }}" alt="VNPT Logo">
             </a>
             <div class="ms-auto">
-                @guest
-                    <a href="{{ route('login') }}" class="btn btn-outline-primary me-2">Đăng Nhập</a>
-                    <a href="{{ route('register') }}" class="btn btn-primary">Đăng Ký</a>
-                @endguest
+                {{-- Removed login/register buttons from header --}}
             </div>
         </div>
     </nav>

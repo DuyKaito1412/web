@@ -164,23 +164,23 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="feature-item">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>Bảo Mật Cao</h3>
-                    <p>Hệ thống được bảo vệ bằng các giải pháp mã hóa và bảo mật tiên tiến nhất</p>
+                    <i class="fas fa-wifi"></i>
+                    <h3>FiberVNN</h3>
+                    <p>Dịch vụ Internet cáp quang tốc độ cao, ổn định, đáp ứng mọi nhu cầu học tập, làm việc và giải trí.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="feature-item">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Hiệu Quả Tối Ưu</h3>
-                    <p>Giao diện thân thiện, tối ưu hóa trải nghiệm người dùng và năng suất công việc</p>
+                    <i class="fas fa-tv"></i>
+                    <h3>MyTV</h3>
+                    <p>Truyền hình tương tác với hàng trăm kênh đặc sắc, kho phim khổng lồ và nhiều tiện ích giải trí hấp dẫn.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="feature-item">
-                    <i class="fas fa-cogs"></i>
-                    <h3>Linh Hoạt Mở Rộng</h3>
-                    <p>Dễ dàng tùy chỉnh và mở rộng theo yêu cầu riêng của từng đơn vị</p>
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Dịch vụ khác của VNPT</h3>
+                    <p>Hỗ trợ đa dạng các dịch vụ: điện thoại cố định, di động, giải pháp công nghệ thông tin cho doanh nghiệp và cá nhân.</p>
                 </div>
             </div>
         </div>
