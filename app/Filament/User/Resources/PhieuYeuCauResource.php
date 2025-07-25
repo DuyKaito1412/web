@@ -26,7 +26,7 @@ class PhieuYeuCauResource extends Resource
                 ->required(),
             Forms\Components\TextInput::make('mo_ta_su_co')->label('Mô tả sự cố')->required(),
             Forms\Components\TextInput::make('dia_chi')->label('Địa chỉ')->required(),
-            Forms\Components\TextInput::make('so_dien_thoai')->label('Số điện thoại')->required(),
+            // Bỏ trường nhập số điện thoại, chỉ lấy từ user
         ]);
     }
 
@@ -47,9 +47,19 @@ class PhieuYeuCauResource extends Resource
                 Tables\Columns\TextColumn::make('created_at')->label('Ngày gửi')->dateTime('d/m/Y H:i'),
                 Tables\Columns\TextColumn::make('diem_so')->label('Điểm đánh giá')->sortable(),
                 Tables\Columns\TextColumn::make('loi_nhan')->label('Lời nhắn đánh giá')->limit(30),
-                Tables\Columns\TextColumn::make('so_dien_thoai')->label('Số điện thoại'),
+                Tables\Columns\TextColumn::make('user.so_dien_thoai')->label('Số điện thoại'),
             ])
             ->filters([
+                \Filament\Tables\Filters\Filter::make('created_at')
+                    ->form([
+                        \Filament\Forms\Components\DatePicker::make('from')->label('Từ ngày'),
+                        \Filament\Forms\Components\DatePicker::make('to')->label('Đến ngày'),
+                    ])
+                    ->query(function ($query, array $data) {
+                        return $query
+                            ->when($data['from'], fn($q) => $q->whereDate('created_at', '>=', $data['from']))
+                            ->when($data['to'], fn($q) => $q->whereDate('created_at', '<=', $data['to']));
+                    }),
                 // Có thể thêm filter theo trạng thái
             ])
             ->actions([

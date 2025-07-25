@@ -18,8 +18,11 @@ class PhieuYeuCau extends Model
         'thoi_gian_hoan_thanh',
         'nhan_vien_truc_id',
         'nhan_vien_ky_thuat_id',
+        'dung_tien_do',
         'diem_so',
         'loi_nhan',
+        'diem_tien_do',
+        'nhan_xet_tien_do',
     ];
 
     // Ví dụ quan hệ

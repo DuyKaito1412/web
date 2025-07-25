@@ -8,6 +8,7 @@ class LoaiSuCo extends Model
 {
     protected $table = 'loai_su_co';
     protected $fillable = [
-        // Thêm các trường phù hợp với migration thực tế
+        'ten_loai',
+        'mo_ta'
     ];
 }

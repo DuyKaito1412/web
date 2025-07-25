@@ -18,6 +18,9 @@ class PhieuYeuCauResource extends Resource
     protected static ?string $model = PhieuYeuCau::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationLabel = 'Tiếp nhận phiếu báo hỏng';
+    protected static ?string $modelLabel = 'Tiếp nhận phiếu báo hỏng';
+    protected static ?string $pluralModelLabel = 'Tiếp nhận phiếu báo hỏng';
 
     public static function form(Form $form): Form
     {
@@ -33,12 +36,24 @@ class PhieuYeuCauResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('id')->label('Mã phiếu')->sortable(),
                 Tables\Columns\TextColumn::make('user.ho_ten')->label('Khách hàng'),
+                Tables\Columns\TextColumn::make('user.so_dien_thoai')->label('Số điện thoại'),
+                Tables\Columns\TextColumn::make('dia_chi')->label('Địa chỉ'),
                 Tables\Columns\TextColumn::make('loaiSuCo.ten_loai')->label('Dịch vụ/Sự cố'),
                 Tables\Columns\TextColumn::make('mo_ta_su_co')->label('Mô tả sự cố'),
                 Tables\Columns\TextColumn::make('trang_thai')->label('Trạng thái'),
                 Tables\Columns\TextColumn::make('created_at')->label('Ngày gửi')->dateTime('d/m/Y H:i'),
             ])
             ->filters([
+                \Filament\Tables\Filters\Filter::make('created_at')
+                    ->form([
+                        \Filament\Forms\Components\DatePicker::make('from')->label('Từ ngày'),
+                        \Filament\Forms\Components\DatePicker::make('to')->label('Đến ngày'),
+                    ])
+                    ->query(function ($query, array $data) {
+                        return $query
+                            ->when($data['from'], fn($q) => $q->whereDate('created_at', '>=', $data['from']))
+                            ->when($data['to'], fn($q) => $q->whereDate('created_at', '<=', $data['to']));
+                    }),
                 // Có thể thêm filter theo trạng thái nếu muốn
             ])
             ->actions([
@@ -92,6 +107,7 @@ class PhieuYeuCauResource extends Resource
             ->whereIn('trang_thai', ['đã giao kỹ thuật', 'đang xử lý']);
     }
 
+    // Ghi đè page ListPhieuYeuCaus để ẩn nút tạo mới
     public static function getPages(): array
     {
         return [

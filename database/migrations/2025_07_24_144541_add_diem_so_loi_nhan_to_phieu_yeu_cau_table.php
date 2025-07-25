@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::table('phieu_yeu_cau', function (Blueprint $table) {
             $table->integer('diem_so')->nullable()->after('dung_tien_do');
             $table->text('loi_nhan')->nullable()->after('diem_so');
+            $table->integer('diem_tien_do')->nullable()->after('loi_nhan');
+            $table->text('nhan_xet_tien_do')->nullable()->after('diem_tien_do');
         });
     }
 
@@ -23,7 +25,18 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('phieu_yeu_cau', function (Blueprint $table) {
-            $table->dropColumn(['diem_so', 'loi_nhan']);
+            if (Schema::hasColumn('phieu_yeu_cau', 'diem_so')) {
+                $table->dropColumn('diem_so');
+            }
+            if (Schema::hasColumn('phieu_yeu_cau', 'loi_nhan')) {
+                $table->dropColumn('loi_nhan');
+            }
+            if (Schema::hasColumn('phieu_yeu_cau', 'diem_tien_do')) {
+                $table->dropColumn('diem_tien_do');
+            }
+            if (Schema::hasColumn('phieu_yeu_cau', 'nhan_xet_tien_do')) {
+                $table->dropColumn('nhan_xet_tien_do');
+            }
         });
     }
 };
